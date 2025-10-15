@@ -19,6 +19,7 @@ export default function TeamsPage() {
   const [teams, setTeams] = useState<TeamWithCounts[]>([]);
   const [loading, setLoading] = useState(true);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -163,13 +164,23 @@ export default function TeamsPage() {
                     : `Managing ${teams.length} team${teams.length !== 1 ? "s" : ""}`}
                 </p>
               </div>
-              <button
-                onClick={() => setIsCreateModalOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <Plus className="h-5 w-5" />
-                Create Team
-              </button>
+              <div className="flex">
+                    <button
+                      onClick={() => setIsCreateModalOpen(true)}
+                      className="flex items-center gap-2 mr-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      <Plus className="h-5 w-5" />
+                      Create Team
+                    </button>
+                    <button
+                      onClick={() => setIsJoinModalOpen(true)}
+                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      <Plus className="h-5 w-5" />
+                      Join Team
+                    </button>
+              </div>
+              
             </div>
 
             {/* Teams List or Empty State */}
